@@ -1,27 +1,46 @@
-// Задача 1. Пакування товарів
-//функція isEnoughCapacity обчислює, чи помістяться всі товари в контейнер при пакуванні.
-// Функція оголошує два параметри: products, containerSize
-// products — об’єкт, у якому ключі містять назви товарів, а їхні значення — кількість цих товарів. Наприклад, { apples: 2, grapes: 4 }.
-// containerSize — число, максимальна кількість одиниць товарів, яку в себе може вмістити контейнер.
+// Задача 1. Імена користувачів
+// Стрілочна функція getUserNames(users) приймає один параметр users — масив об'єктів користувачів. 
+// За допомогою метода map перебираємо масив об'єктів users (а саме кожного user) і повертаємо в новий масив його ім'я (властивість name) із масиву users
+    
+const getUserNames = users => users.map(user => user.name);
 
-function isEnoughCapacity(products, containerSize) {
-    // змінна, у якій буде зберігатись кількість одиниць
-    let quantity = 0;
-    // перебираємо об'єкт products
-    for (const product in products) {
-    // на кожній ітерації до змінної quantity додаємо значення product
-        quantity += products[product];
-    // якщо значення змінної quantity більше за максимальну кількість одиниць (containerSize)
-        if (quantity > containerSize) {
-    // то повертаємо false
-            return false;
-        }
-    }
-    // в інакшому випадку повертаємо true
-    return true;
-    }
+console.log(
+  getUserNames([
+  {
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    balance: 2811
+  },
+  {
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    balance: 3821
+  },
+  {
+    name: "Ross Vazquez",
+    email: "rossvazquez@xinware.com",
+    balance: 3793
+  },
+  {
+    name: "Elma Head",
+    email: "elmahead@omatom.com",
+    balance: 2278
+  },
+  {
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    balance: 3951
+  },
+  {
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    balance: 1498
+  },
+  {
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    balance: 2764
+  },
+])
+); // ["Moore Hensley", "Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson", "Sheree Anthony"]
 
-console.log(isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)); // true
-console.log(isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)); // false
-console.log(isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)); // true
-console.log(isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)); // false
